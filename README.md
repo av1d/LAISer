@@ -3,7 +3,7 @@
 
 <img src="https://github.com/av1d/LAISer/blob/main/images/LAISer_logo.png" width="300" height="300" />
 
-An experimental local search engine assistant frontend and CLI for [ollama](https://ollama.com/) and [llama.cpp](https://github.com/ggerganov/llama.cpp) with a focus on being extremely lightweight and easy to run. The goal is to provide something along the lines of a minimalist Perplexity.  
+An experimental local search engine assistant frontend and CLI for [ollama](https://ollama.com/) and [llama.cpp](https://github.com/ggerganov/llama.cpp) with a focus on being extremely lightweight and easy to run. The goal is to provide something along the lines of a minimalist Perplexity. The web interface is responsive and works well with mobile devices.
 
 Examples:
 ![Screenshot 01](https://github.com/av1d/LAISer/blob/main/images/screenshot_01.png)
