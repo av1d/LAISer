@@ -1,0 +1,311 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Bauhaus', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #111111, #222222);
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  background: #232323;
+  border-radius: 0;
+  overflow: auto;
+}
+
+/* background texture */
+.chat-container {
+  background: 
+    linear-gradient(
+      135deg,
+      rgba(17, 17, 17, 0.1) 33.33%,
+      transparent 33.33%,
+      transparent 66.66%,
+      rgba(17, 17, 17, 0.1) 66.66%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(17, 17, 17, 0.4) 33.33%,
+      rgba(34, 34, 34, 0) 33.33%,
+      rgba(34, 34, 34, 0) 66.66%,
+      rgba(17, 17, 17, 0.4) 66.66%
+    );
+  background-size: 10px 10px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 60px;
+}
+
+.message {
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.message-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+.message.sent {
+  background: #383838;
+  color: #f5f5f5;
+  border-left: 2px solid black;
+  border-top: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px #696969dd;
+  margin-left: 5px;
+  padding-left: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.message.received {
+  background: #111111;
+  color: #f5f5f5;
+  width: 100%;
+  box-shadow: 1px 2px 2px #333333aa;
+  border-left: 2px solid black;
+  border-top: 1px solid black;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin: 0;
+  margin-left: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.message-input-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #33333300;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 1px solid #7fff00;
+  border-radius: 15px;
+  resize: none;
+  overflow-y: hidden;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.message-input:focus {
+  outline: none;
+  box-shadow: 0px 0px 2px 2px #7fff0033;
+}
+
+/* media queries for mobile UI */
+@media (max-width: 767px) {
+  .chat-container {
+    bottom: 90px;
+  }
+
+  .message-input-container {
+    height: 80px;
+  }
+}
+
+/* links & lists */
+a {
+  color: #7fff00;
+}
+
+ul {
+  list-style-type: square;
+  margin: 0px;
+  display: none;
+}
+
+li {
+  padding: 0;
+  margin-bottom: 1px;
+  margin-top: 0px;
+  line-height: 1;
+}
+
+li::marker {
+  color: #7fff00;
+}
+
+/* sources button */
+.sources-button, .copy-button, .copy-all-button {
+  padding: 4px;
+  display: inline-block;
+  background-color: #333;
+  color: #ccc;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: 1px 1px 0 #555;
+  transition: all 0.3s;
+  margin-left: 5px;
+  padding: 4px;
+}
+
+.sources-button:hover, .copy-button:hover, .copy-all-button:hover {
+  color: #fff;
+  box-shadow: 2px 2px 0 #7fff0099;
+}
+
+.sources-button:focus, .copy-button:focus, .copy-all-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 #7fff0099;
+}
+
+/* send button */
+
+.send-button {
+  padding: 12px 20px;
+  border: 1px solid #7fff00;
+  background: #111;
+  color: #7fff00;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 26px;
+  margin-left: 0px;
+  margin-right: 20px;
+}
+
+.send-button:hover {
+  color: #f5f5f5;
+  box-shadow: 1px 1px 0 #7fff00;
+}
+
+.send-button:focus {
+  outline: none;
+  box-shadow: 1px 1px 0 #7fff00;
+}
+
+.send-icon { /* text of the send button */
+  display: block;
+}
+
+/* spinning animation on send button */
+.loader {
+  width: 30px;
+  aspect-ratio: 1;
+  display: grid;
+  mask: conic-gradient(from 45deg, #0001, #000);
+  animation: load 1s steps(10) infinite;
+  --_g: linear-gradient(#7fff00 0 0) 50%;
+  background:
+    var(--_g)/34% 8% space no-repeat,
+    var(--_g)/8% 34% no-repeat space;
+  position: relative;
+  z-index: 1;
+  display: none;
+}
+
+.pupil {
+  border-radius: 50%;
+  background-color: black;
+  animation: pupilAnimation 2s infinite alternate;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+@keyframes pupilAnimation {
+  0% {
+    width: 10px;
+    height: 8px;
+  }
+  25% {
+    width: 15px;
+    height: 13px;
+  }
+  50% {
+    width: 20px;
+    height: 18px;
+  }
+  100% {
+    width: 25px;
+    height: 23px;
+  }
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, #000000 20%, #7fff00 20%);
+  transform: rotate(45deg);
+  animation: load 10s steps(10) infinite;
+  z-index: -1;
+}
+
+@keyframes load {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* scrollbars */
+/* width & height for the scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #7fff0066;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #00;
+}
+
+
+
+
+
