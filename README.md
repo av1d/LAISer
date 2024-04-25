@@ -3,13 +3,12 @@
 
 <img src="https://github.com/av1d/LAISer/blob/main/images/LAISer_logo.png" width="300" height="300" />
 
-An experimental local search engine assistant frontend and CLI for [ollama](https://ollama.com/) and [llama.cpp](https://github.com/ggerganov/llama.cpp) with a focus on being extremely lightweight and easy to run. The goal is to provide something along the lines of a minimalist Perplexity. The web interface is responsive and works well with mobile devices.
+An experimental local search engine assistant frontend and CLI for [ollama](https://ollama.com/) and [llama.cpp](https://github.com/ggerganov/llama.cpp) with a focus on being extremely lightweight and easy to run. The goal is to provide something along the lines of a minimalist Perplexity. The web interface is responsive and works well with [mobile devices](https://github.com/av1d/LAISer/blob/main/images/screenshot_mobile.png).
 
 Examples:
 ![Screenshot 01](https://github.com/av1d/LAISer/blob/main/images/screenshot_01.png)
 ![Screenshot 02](https://github.com/av1d/LAISer/blob/main/images/screenshot_02.png)
 ![Screenshot 03](https://github.com/av1d/LAISer/blob/main/images/screenshot_03.png)
-![Screenshot 03](https://github.com/av1d/LAISer/blob/main/images/screenshot_mobile.png)
 
 It is written in Python 3 with [Flask](https://flask.palletsprojects.com/en/3.0.x/) which provides a web-based UI,
 or you can run it from the command line instead.
