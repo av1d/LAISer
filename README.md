@@ -9,6 +9,7 @@ Examples:
 ![Screenshot 01](https://github.com/av1d/LAISer/blob/main/images/screenshot_01.png)
 ![Screenshot 02](https://github.com/av1d/LAISer/blob/main/images/screenshot_02.png)
 ![Screenshot 03](https://github.com/av1d/LAISer/blob/main/images/screenshot_03.png)
+![Screenshot 03](https://github.com/av1d/LAISer/blob/main/images/screenshot_mobile.png)
 
 It is written in Python 3 with [Flask](https://flask.palletsprojects.com/en/3.0.x/) which provides a web-based UI,
 or you can run it from the command line instead.
