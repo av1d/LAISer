@@ -1,5 +1,5 @@
 # LAISer
-## _Local AI-Assisted Search_
+## _Local AI-Assisted Web Search_
 
 <img src="https://github.com/av1d/LAISer/blob/main/images/LAISer_logo.png" width="300" height="300" />
 
