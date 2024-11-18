@@ -23,13 +23,25 @@ from urllib.parse import urlparse
 #   Local AI Search by av1d
 
 APPNAME = 'LAISer'
-VERSION = '0.1'
+VERSION = '0.2'
+
+### Changelog:
+###
+### 1. Added a timeout between queries because DuckDuckGo-Search (DDGS)
+### is raising a 'duckduckgo_search.exceptions.RatelimitException'
+### rate-limiteng error (something on DuckDuckGo changed?)
+###
+### 2. Changed syntax of calling the DDGS module.
+
 
 
 def search(search_query: str, num_results_to_return: int) -> list:
     # perform a search on duckduckgo.
 
-    results = DDGS().text(keywords=search_query)
+    results = DDGS().text(
+        search_query,
+        max_results=num_results_to_return
+    )
     text_container = []
     for result in results[:num_results_to_return]:
         text = {
@@ -44,7 +56,10 @@ def search(search_query: str, num_results_to_return: int) -> list:
 def news(search_query: str, num_results_to_return: int) -> list:
     # fetch the news from duckduckgo.
 
-    results = DDGS().news(keywords=search_query)
+    results = DDGS().news(
+        search_query,
+        max_results=num_results_to_return
+    )
     news_container = []
     for result in results[:num_results_to_return]:
         news = {
@@ -101,6 +116,14 @@ def wikipedia(search_arg) -> str:
     summary = _wikipedia_summary(wiki_page_title)
     return summary
 
+def wait_between_queries(timeout_duration = 0.2):
+    """
+    Waits the necessary time between queries. If you are still
+    receiving rate-limiting errors, increase this one decimal point
+    until it stops.
+    """
+    time.sleep(timeout_duration)
+
 def perform_searches(search_query: str) -> list:
 
     print("Getting Wikipedia summary...") if not SILENT else None
@@ -109,6 +132,7 @@ def perform_searches(search_query: str) -> list:
         wikipedia_summary,
         "wikipedia"
     )
+    wait_between_queries()
 
     print("Getting search results...") if not SILENT else None
     search_result = search(search_query, SEARCH_RESULT_COUNT)
@@ -116,6 +140,7 @@ def perform_searches(search_query: str) -> list:
         search_result,
         "search"
     )
+    wait_between_queries()
 
     print("Getting news results...") if not SILENT else None
     news_result = news(search_query, NEWS_RESULT_COUNT)
@@ -123,6 +148,7 @@ def perform_searches(search_query: str) -> list:
         news_result,
         "news"
     )
+    wait_between_queries()
 
     search_results = {
         'wikipedia_summary': wikipedia_summary,
